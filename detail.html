@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="detail.css"/>
+</head>
+<body>
+    <div class="title">객체지향프로그래밍</div>
+    교수명: <span class="professor">김차성</span><br>
+    강의평: <span class="score">2.08</span>
+    <br>
+    <a href="{% url 'create' %}"><input type="button" value="새 강의평 쓰기"/></a>
+    <a href="{% url 'update' %}"><input type="button" value="수정하기"/></a>
+    <br>
+    <ul class="evaluation">
+
+    </ul>
+</body>
+</html>
