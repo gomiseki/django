@@ -5,64 +5,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+
+body {
+    background: url('/static/me1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+        .type01{
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .top_bar{
+            width: 400px;
+            height: 200px;
+            background-color: ghostwhite !important;
+            color: black;
+            top: 50%;
+            left: 80%;
+            margin: 55% -15%;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .searchbtn{
+            text-align: center;
+        }
+
+        .searchbar{
+            margin-top: 20%;
+        }
+
+        .classtable{
+            width: 700px;
+            height: 100px;
+            background-color: ghostwhite !important;
+            color: black;
+            top: 50%;
+            left: 80%;
+            border-radius: 10px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2%;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="top bar"></div>
-    <form name="form1" method="POST" action="{%url 'search'%}">
-        {% csrf_token %} 
-        <div class="searchbar">
-            <table>
-                <tr>
-                    <th>년도/학기</th>
-                    <th>
-                        <select name="year">
-                            <option value="2020">2020</option>
-                            <option value="2019">2019</option>
-                            <option value="2018">2018</option>
-                            <option value="2017">2017</option>
-                            <option value="2016">2016</option>
-                            <option value="2015">2015</option>
-                            <option value="2014">2015</option>
-                        </select>
-                    </th>
-                    <th>
-                        <select name="semester" >
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </th>
-                </tr>
-                <tr>
-                    <th>전공/부전공/교양</th>
-                    <th><select name="dept">
-                            {% for dept in deptList %}
-                            <option value="{{dept}}">{{dept}}</option>
-                            {% endfor %}
-                        </select></th>
-                </tr>
-            </table>
-        </div>
-        <div class="searchbtn">
-            <input class="btn" type="submit" value="조회">
-        </div>
-    </form>
+    <div class="type01">
+        <div class="top_bar">
+            <form name="form1" method="POST" action="{%url 'search'%}">
+                {% csrf_token %} 
+                <div class="searchbar">
+                    <br><br><br>
+                    <table>
+                        <tr>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;년도 / 학기</th>
+                            <th>
+                                &nbsp;<select name="year">
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2015</option>
+                                </select>
+                            </th>
+                            <th>
+                                &nbsp;<select name="semester" >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;전공 / 부전공 / 교양</th>
+                            <th>&nbsp;<select name="dept">
+                                    {% for dept in deptList %}
+                                    <option value="{{dept}}">{{dept}}</option>
+                                    {% endfor %}
+                                </select></th>
+                        </tr>
+                    </table>
+                </div>
+                <br><br>
+                <div class="searchbtn">
+                    <input class="btn" type="submit" value="조회">
+                </div>
+            </form>
+        </div>    
+    </div>
     {%if isTable %}
     <div class="classtable">
         <table>
-            <tr>
-                <th>개설영역</th>
-                <th>학년</th>
-                <th>학수번호</th>
-                <th>교과목명</th>
-                <th>학기</th>
-                <th>전공</th>
-                <th>담당교수</th>
-                <th>학점</th>
-                <th>시간</th>
+            <tr><br>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;개설영역/</th>
+                <th>학년/</th>
+                <th>학수번호/</th>
+                <th>교과목명/</th>
+                <th>학기/</th>
+                <th>전공/</th>
+                <th>담당교수/</th>
+                <th>학점/</th>
+                <th>시간/</th>
             </tr>
-            <p>{{lectures}}{{searchList}}</p>
-            {% for lecture in searchList %}
+            {%for lecture in searchList %}
             <tr>
                 <th>{{lecture.area}}</th>
                 <th>{{lecture.rq_year}}</th>
@@ -76,7 +129,6 @@
             </tr>
             {% endfor %}
         </table>
-    </div>
     {% endif %}
 </body>
 
