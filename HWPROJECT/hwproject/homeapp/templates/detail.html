@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="detail.css"/>
+</head>
+<body>
+    <div class="title">{{selected_lecture.title}}</div>
+    교수명: <span class="professor">{{selected_lecture.professor}}</span><br>
+    총점: <span class="score">2.08</span>
+    <br>
+
+    <br>
+    <div class="evaluation">
+        {% for posts in postsList %}
+        강의평: <span>{{posts.body}}</span><br>
+        평점: <span>{{posts.rating}}</span><br>
+        작성자: <span>{{posts.writer}}</span><br>
+        {% endfor %}
+    </div>
+
+    <a href="{%url 'new'%}">강의평 작성</a>
+</body>
+</html>
