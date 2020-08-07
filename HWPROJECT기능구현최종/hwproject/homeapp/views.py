@@ -69,14 +69,12 @@ def update(request, title, id):
     post = Post.objects.get(id=id)
     if ( request.method == "POST" ):
         post.writer = request.user
-        lecture_title = request.POST['title']
-        post.lecture = Lecture.objects.get(id=post.lecture.id)
         post.body = request.POST['body']
         post.rating = request.POST['rating']
         post.save()
-        return redirect('detail' , str(post.lecture.))
+        return redirect('detail' , str(post.lecture.id))
 
-    return render(request, 'update.html', {'selected_lecture' : selected_lecture, 'post' : post})
+    return render(request, 'update.html', {'selected_lecture' : title, 'post' : post})
 
 
 def create(request, id):
